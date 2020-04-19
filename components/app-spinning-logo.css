@@ -4,12 +4,12 @@
 }
 
 .applogo-container {
-    display: flex;
+    display: inline;
     justify-content: center;
 }
 
 .applogo {
     width: 20vw;
-    display: block;
     animation: 4s spinning linear infinite;
+    transform-y: 50%;
 }
