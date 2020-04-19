@@ -14,6 +14,12 @@ const GlobalStyle = createGlobalStyle`
   body {
     background-image: url("/72.jpg");
   }
+
+  pre {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 1rem;
+    font-size: 1.5rem;
+  }
 `
 
 export default GlobalStyle

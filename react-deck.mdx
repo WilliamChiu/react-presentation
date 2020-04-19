@@ -16,14 +16,76 @@ An intro to Facebook's framework for building UIs
 </Title>
 
 ---
+
 ## What is React?
 - Front end Javascript library
 - Can be used to create single-page or multi-page user interfaces
 
 ---
+
 ## Where does React fit?
 
 <img src="./react-mvc.svg" style={{height:'50vh', width:'unset'}}/>
+
+---
+
+<div style={{width: "50vw"}}>
+
+## What do you all know about React?
+
+</div>
+
+---
+
+## Why React?
+- What if your view <p style={{fontStyle: "italic", display:"inline"}}>reacted</p> to changes to your data?
+- What if you could speed up manipulations to the DOM?
+- What if your code was organized like your UI is?
+
+---
+
+## A more "reactive" experience
+
+```
+let lockdown = "April 15th, 2020"
+$("#date").text(lockdown)
+lockdown = "May 15th, 2020"
+// What does $("#date").text() return?
+```
+
+<Steps>
+
+- What if the DOM reflected your underlying data?
+
+</Steps>
+
+---
+
+## A more "reactive" experience
+
+```
+class Lockdown extends React.Component {
+  constructor() {
+    this.state = {date: "April 15th, 2020"}
+    this.updateDate = this.updateDate.bind(this) // Ignore for now
+  }
+  updateDate() {
+    this.setState({date: "May 15th, 2020"})
+  }
+  render() {
+    return <div>
+      <button onClick={this.updateDate}>Change Date</button>
+      <div>{this.state.lockdown}</div>
+    </div>
+  }
+}
+```
+
+---
+
+import Lockdown from "./components/lockdown"
+
+<Lockdown/>
 
 ---
 

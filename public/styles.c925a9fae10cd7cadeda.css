@@ -1,0 +1,1 @@
+@keyframes spinning{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}.applogo-container{display:inline;justify-content:center}.applogo{width:20vw;animation:spinning 4s linear infinite;transform-y:50%}
