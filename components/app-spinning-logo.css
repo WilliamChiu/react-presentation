@@ -1,0 +1,15 @@
+@keyframes spinning{
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.applogo-container {
+    display: flex;
+    justify-content: center;
+}
+
+.applogo {
+    width: 20vw;
+    display: block;
+    animation: 4s spinning linear infinite;
+}
