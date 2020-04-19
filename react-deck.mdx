@@ -167,9 +167,7 @@ Grades: <Steps>
 
 - What if you could make a `<Button>` html tag?
 - React uses components to maximize code reuse
-- Components contain other components or DOM[^1] nodes
-
-[^1]: virtualized, to be more accurate!
+- Components contain other components or DOM nodes
 
 ---
 
@@ -199,7 +197,6 @@ Bio
 ```
 Posts
 - array of strings
-- corresponding array of dates
 ```
 
 </Steps>
@@ -207,16 +204,16 @@ Posts
 
 ---
 
+import { ModularExampleContainer, Blog } from "./components/modular"
+
 ## 3) Modular like LEGO®
 
+<ModularExampleContainer>
 <Steps>
-
-<Flex>
 <div>
 
 Photo:
 ```
-import react from "React"
 let Photo = function(props) {
   let url = props.url
   return <img src={url}/>
@@ -224,13 +221,80 @@ let Photo = function(props) {
 ```
 
 </div>
-</Flex>
+<div>
 
+Bio:
+```
+let Bio = function(props) {
+  let name = props.name
+  let age = props.age
+  let hobbies = props.hobbies
+  let last = hobbies.length - 1
+  hobbies[last] = "and " + hobbies[last]
+  return <p>
+    {name} is {age} years old
+    and likes {hobbies.join(", ")}
+  </p>
+}
+```
+
+</div>
 </Steps>
-
+</ModularExampleContainer>
 
 ---
 
+## 3) Modular like LEGO®
+
+<ModularExampleContainer>
+<div>
+
+Posts:
+```
+let Posts = function(props) {
+  let posts = props.posts
+  let result = []
+  for (let i = 0; i < posts.lengths; i++) {
+    result.append(<div>{posts[i]}</div>)
+  }
+  return result
+}
+```
+
+</div>
+</ModularExampleContainer>
+
+---
+
+## 3) Modular like LEGO®
+What passes props into these components?
+
+<ModularExampleContainer>
+<Steps>
+<div>
+
+The Blog component!
+```
+let Blog = function(props) {
+  return <div>
+    <Photo url="./sanic.png"/>
+    <Bio name="Billy" age="21" hobbies={["reading", "bouldering", "memeing"]}/>
+    <Posts posts={["i like apples", "i like sonic", "i miss school"]}/>
+  </div>
+}
+```
+
+</div>
+</Steps>
+</ModularExampleContainer>
+
+---
+
+## 3) Modular like LEGO®
+
+<Blog/>
+
+---
 
 ## List of potential topics
 - Event handlers are difficult and verbose

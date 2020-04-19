@@ -14,7 +14,6 @@ let Container = styled.div`
 let Average = props => {
   const length = 4
   const step = useSteps(length)
-  console.log(props.gradeAvgs)
 
   return (
     <Container>
