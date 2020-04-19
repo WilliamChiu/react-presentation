@@ -7,7 +7,7 @@ let extension = {
     monospace: '"Roboto Mono", monospace',
   },
   colors: {
-    text: '#333',
+    text: '#433',
     background: 'unset',
     primary: '#33e',
   },

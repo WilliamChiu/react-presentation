@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     background-image: url("/72.jpg");
+    background-size: contain;
   }
 
   pre {

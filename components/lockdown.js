@@ -2,17 +2,17 @@ import React from "react"
 import styled from "styled-components"
 
 let PrettyContainer = styled.div`
-  h1 {
+  h4 {
     font-family: "Mont",sans-serif;
     font-weight: 700;
-    line-height: 1.125;
+    margin-block-end: .5rem;
   }
 
   button {
     font-family: "Mont",sans-serif;
     font-weight: 700;
-    font-size: 2rem;
-    background-color: #333;
+    font-size: 1.5rem;
+    background-color: #433;
     border: none;
     color: white;
     padding: 1rem;
@@ -34,7 +34,7 @@ class Lockdown extends React.Component {
   }
   render() {
     return <PrettyContainer>
-      <h1>{this.state.date}</h1>
+      <h4>{this.state.date}</h4>
       <button onClick={this.updateDate}>Change Date</button>
     </PrettyContainer>
   }

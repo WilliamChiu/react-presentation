@@ -19,7 +19,7 @@ An intro to Facebook's framework for building UIs
 
 ## What is React?
 - Front end Javascript library
-- Can be used to create single-page or multi-page user interfaces
+- Used to create user interfaces
 
 ---
 
@@ -38,13 +38,13 @@ An intro to Facebook's framework for building UIs
 ---
 
 ## Why React?
-- What if your view <p style={{fontStyle: "italic", display:"inline"}}>reacted</p> to changes to your data?
-- What if you could speed up manipulations to the DOM?
-- What if your code was organized like your UI is?
+1. What if your view <p style={{fontStyle: "italic", display:"inline"}}>reacted</p> to changes to data?
+2. What if you could speed up DOM manipulations?
+3. What if your code was organized like your UI is?
 
 ---
 
-## A more "reactive" experience
+## 1) A more "reactive" experience
 
 ```
 let lockdown = "April 15th, 2020"
@@ -61,7 +61,7 @@ lockdown = "May 15th, 2020"
 
 ---
 
-## A more "reactive" experience
+## 1) A more "reactive" experience
 
 ```
 class Lockdown extends React.Component {
@@ -83,18 +83,161 @@ class Lockdown extends React.Component {
 
 ---
 
+## 1) A more "reactive" experience
+
 import Lockdown from "./components/lockdown"
 
 <Lockdown/>
 
 ---
 
+import Sanic from "./components/sanic"
+
+
+## 2) Gotta go fast <Sanic/>
+
+- React's speeds up UIs by reducing DOM changes
+- This is done with a Virtual DOM!
+- Why? The view usually is less complex than the model
+
+---
+
+import { Grades, Average, Changes } from "./components/grades"
+import Flex from "./components/flex"
+
+## 2) Gotta go fast <Sanic/>
+
+Student grade example:
+
+<Flex>
+<div>
+Grades: <Steps>
+<Grades>92</Grades>
+<Grades>90</Grades>
+<Grades>96</Grades>
+<Grades>88</Grades>
+</Steps>
+</div>
+<Average gradeAvgs={["", 92, 91, 92.7, 91.5]}/>
+<Changes/>
+</Flex>
+
+---
+
+## 2) Gotta go fast <Sanic/>
+
+What if we have a very smart student?
+
+<Flex>
+<div>
+Grades: <Steps>
+<Grades>100</Grades>
+<Grades>100</Grades>
+<Grades>100</Grades>
+<Grades>100</Grades>
+</Steps>
+</div>
+<Average gradeAvgs={["", 100, 100, 100, 100]}/>
+<Changes/>
+</Flex>
+
+---
+
+## 2) Gotta go fast <Sanic/>
+
+React identifies differences before making changes
+
+<Flex>
+<div>
+Grades: <Steps>
+<Grades>100</Grades>
+<Grades>100</Grades>
+<Grades>100</Grades>
+<Grades>100</Grades>
+</Steps>
+</div>
+<Average gradeAvgs={["", 100, 100, 100, 100]}/>
+<Sanic/>
+<Changes changes={[0, 1, 1, 1, 1]}/>
+</Flex>
+
+---
+
+## 3) Modular like LEGO®
+
+- What if you could make a `<Button>` html tag?
+- React uses components to maximize code reuse
+- Components contain other components or DOM[^1] nodes
+
+[^1]: virtualized, to be more accurate!
+
+---
+
+## 3) Modular like LEGO®
+
+```
+<Blog>
+  <Photo/>
+  <Bio/>
+  <Posts/>
+</Blog>
+```
+
+<Flex>
+<Steps>
+
+```
+Photo
+- url
+```
+```
+Bio
+- name
+- age
+- hobbies
+```
+```
+Posts
+- array of strings
+- corresponding array of dates
+```
+
+</Steps>
+</Flex>
+
+---
+
+## 3) Modular like LEGO®
+
+<Steps>
+
+<Flex>
+<div>
+
+Photo:
+```
+import react from "React"
+let Photo = function(props) {
+  let url = props.url
+  return <img src={url}/>
+}
+```
+
+</div>
+</Flex>
+
+</Steps>
+
+
+---
+
+
 ## List of potential topics
 - Event handlers are difficult and verbose
 - - Two way data bindings
 - The DOM is very intensive—any manipulation to it tells the browser to perform a change
 - - Using a Virtual DOM, we can alleviate this
-- - Virtual DOM objects correspond to DOM objects, but dont trigger changes unless React tells it to [^1]
+- - Virtual DOM objects correspond to DOM objects, but dont trigger changes unless React tells it to [^2]
 - Organizing code in a big javascript file sucks
 - - Component architecture vs other paradigms
 - Writing a server is a lot of work
@@ -102,7 +245,7 @@ import Lockdown from "./components/lockdown"
 - - React Router
 - - Can focus on only writing API endpoints in your backend!
 
-[^1]:https://www.codecademy.com/articles/react-virtual-dom
+[^2]:https://www.codecademy.com/articles/react-virtual-dom
 
 ---
 
