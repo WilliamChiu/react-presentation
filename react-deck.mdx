@@ -1,9 +1,89 @@
-# Sawp yote
+import myTheme from './theme.js'
+export const theme = myTheme
+
+# Reacc
 
 ---
 
-# yeet hello
+## List of potential topics
+- Event handlers are difficult and verbose
+- - Two way data bindings
+- The DOM is very intensive—any manipulation to it tells the browser to perform a change
+- - Using a Virtual DOM, we can alleviate this
+- - Virtual DOM objects correspond to DOM objects, but dont trigger changes unless React tells it to [^1]
+- Organizing code in a big javascript file sucks
+- - Component architecture vs other paradigms
+- Writing a server is a lot of work
+- - Utilization of browser API-s like history to encroach on server-side functionality
+- - React Router
+- - Can focus on only writing API endpoints in your backend!
+
+[^1]:https://www.codecademy.com/articles/react-virtual-dom
 
 ---
 
-# derp
+## List of confusing things about React
+- JSX?
+- Other tools that React often gets dumped together with: Webpack, npm, node, Express, create-react-app, Babel
+- Why doesnt it look like javascript? ES6 classes as an abstraction of prototype architecture
+- Organization of code
+- - How this fit MVC
+- - Components
+- - Children
+- - Parents
+- - State
+- - Props
+- Lifecycle methods
+- Why does a React project folder look so different?
+- - Show how the build folder looks similar to what they are familiar with (but the .js files look like garbage)
+- Why does it need to be built?
+- - Compile? Not really, Webpack puts together "modules". Babel transpiles modern Javascript into older, compatible Javascript.
+- Styling???
+- - Vanilla CSS, Styled Components, Precompiled CSS
+
+
+---
+
+## Little gotchas
+- setState()
+- - Not the same as just changing the the class's state variable! Also tells React that a change occured and to re-render the element!
+- Async function
+- - Callbacks, Promises, async/await
+- Composition > Inheritance
+- Lifting up state
+- JSX is not HTML, more similar to functional Javascript
+- - {`<p hi="yeet">"yeeeet2"</p> <=> React.createElement("p", {hi: "yeet"}, "yeeeet2")`}
+- - {`<p hi="yeet"><p>"nested"</p></p> <=> React.createElement("p", {hi: "yeet"}, React.createElement("p", null, "nested"))`}
+
+---
+
+## Skeleton
+- Intro (10 min)
+- - What is React? (2 min)
+- - What bugs ya'll about jQuery and Flask (3 min)
+- - What does React offer that jQuery and Flask do not (5 min)
+
+- Teach React (20 min)
+- - Describe the complexities of React as half the library itself, and half all the baggage it comes along with
+- - Walk through the baggage first before talking about React
+- - - create-react-app, node, npm, (npx?), node project structure, webpack, why react needs to be "built" (6 min)
+- - Create an empty project, put "Hello World" on the page (2 min)
+- - - How this fit MVC (2 min)
+- - - React Concepts (10 min)
+- - - - Components
+- - - - Children
+- - - - Parents
+- - - - State
+- - - - Props
+
+---
+
+## Where does React fit?
+
+<img src="./cats.jpg"/>
+
+
+---
+
+Interesting reads
+- https://medium.com/the-guild/implementing-a-runtime-version-of-jsx-78e004bf432e
