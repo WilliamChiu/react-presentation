@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "mdx-deck react-deck.mdx",
-    "build": "mdx-deck build react-deck.mdx"
+    "build": "mdx-deck build react-deck.mdx",
+    "postinstall": "patch-package"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +15,8 @@
     "mdx-deck": "^4.1.1"
   },
   "dependencies": {
+    "ncp": "^2.0.0",
+    "patch-package": "^6.2.2",
     "styled-components": "^5.1.0"
   }
 }

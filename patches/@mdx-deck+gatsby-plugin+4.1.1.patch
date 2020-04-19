@@ -1,0 +1,57 @@
+diff --git a/node_modules/@mdx-deck/gatsby-plugin/gatsby-node.js b/node_modules/@mdx-deck/gatsby-plugin/gatsby-node.js
+index 54db516..1e0c840 100644
+--- a/node_modules/@mdx-deck/gatsby-plugin/gatsby-node.js
++++ b/node_modules/@mdx-deck/gatsby-plugin/gatsby-node.js
+@@ -1,4 +1,5 @@
+ const fs = require('fs')
++const ncp = require('ncp')
+ const path = require('path')
+ const { createPath, validatePath } = require('gatsby-page-utils')
+ const remarkPlugins = [
+@@ -23,6 +24,27 @@ exports.onPreBootstrap = ({}, opts = {}) => {
+   }
+ }
+ 
++exports.onPreBuild = ({}, opts = {}) => {
++  opts.dirname = opts.dirname || __dirname
++  const staticSourceDir = path.join(opts.dirname, 'static')
++  const hasStaticDir = fs.existsSync(staticSourceDir)
++
++  if (fs.existsSync('./static')) {
++    // remove temp directory
++    fs.unlinkSync('./static')
++  }
++
++  if (hasStaticDir) {
++    // link to source static directory
++    ncp(staticSourceDir, './static')
++  }
++}
++
++exports.onPostBuild = ({}, opts = {}) => {
++  fs.rmdirSync("./static", { recursive: true })
++  console.log("Cleaned up /static")
++}
++
+ exports.onCreateWebpackConfig = ({
+   stage,
+   rules,
+diff --git a/node_modules/@mdx-deck/gatsby-plugin/package-lock.json b/node_modules/@mdx-deck/gatsby-plugin/package-lock.json
+new file mode 100644
+index 0000000..90d499f
+--- /dev/null
++++ b/node_modules/@mdx-deck/gatsby-plugin/package-lock.json
+@@ -0,0 +1,13 @@
++{
++  "name": "@mdx-deck/gatsby-plugin",
++  "version": "4.1.1",
++  "lockfileVersion": 1,
++  "requires": true,
++  "dependencies": {
++    "ncp": {
++      "version": "2.0.0",
++      "resolved": "https://registry.npmjs.org/ncp/-/ncp-2.0.0.tgz",
++      "integrity": "sha1-GVoh1sRuNh0vsSgbo4uR6d9727M="
++    }
++  }
++}
