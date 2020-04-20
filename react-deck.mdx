@@ -2,6 +2,8 @@ import myTheme from './theme.js'
 import GlobalStyle from './components/background'
 import ReactLogo from './components/app-spinning-logo.js'
 import Title from './components/title.js'
+import PropStateDemo from './components/prop-state-demo.js'
+import StatesPropsPreContainer from './components/prop-state-container.js'
 export const theme = myTheme
 
 <Header>
@@ -317,6 +319,46 @@ let Blog = function(props) {
 ## 3) Modular like LEGO®
 
 <Blog/>
+
+
+---
+## States and Props
+<PropStateDemo/>
+
+---
+## States and Props
+
+<StatesPropsPreContainer>
+
+(Inside) Parent Component: 
+```javascript
+<Button buttontext={this.state.buttontext}/>
+```
+
+Child Component:
+```javascript
+class Button extends React.Component {
+    constructor(props) {
+        super(props) // Call React.Component constuctor
+        this.state = { color: "green" } // Define initial state
+        this.isClicked = this.isClicked.bind(this) //ignore
+    }
+    isClicked() { //Toggle state between red and green on click
+        if (this.state.color == "green") this.setState({color: "red"})
+        else this.setState({color: "green"})
+    }
+    render() {
+        return <ButtonWrapper>
+            Child Component
+            <StyledButton color={this.state.color} onClick={this.isClicked}>
+                {this.props.buttontext} // Uses the buttontext variable passed in from parent
+            </StyledButton>
+        </ButtonWrapper>
+    }
+}
+```
+
+</StatesPropsPreContainer>
 
 ---
 
