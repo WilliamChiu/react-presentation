@@ -63,7 +63,11 @@ lockdown = "May 15th, 2020"
 
 ---
 
+import Smaller from "./components/smaller"
+
 ## 1) A more "reactive" experience
+
+<Smaller>
 
 ```
 class Lockdown extends React.Component {
@@ -82,6 +86,8 @@ class Lockdown extends React.Component {
   }
 }
 ```
+
+</Smaller>
 
 ---
 
@@ -185,26 +191,40 @@ Grades: <Steps>
 
 <Flex>
 <Steps>
+<div>
 
 ```
 Blog
 - ???
 ```
+
+</div>
+<div>
+
 ```
 Photo
 - url
 ```
+
+</div>
+<div>
+
 ```
 Bio
 - name
 - age
 - hobbies
 ```
+
+</div>
+<div>
+
 ```
 Posts
 - array of strings
 ```
 
+</div>
 </Steps>
 </Flex>
 
@@ -216,7 +236,7 @@ import { ModularExampleContainer, Blog } from "./components/modular"
 
 <ModularExampleContainer>
 <Steps>
-<div>
+<Smaller size={1.2}>
 
 Photo:
 ```
@@ -226,8 +246,8 @@ let Photo = function(props) {
 }
 ```
 
-</div>
-<div>
+</Smaller>
+<Smaller size={1.2}>
 
 Bio:
 ```
@@ -244,7 +264,7 @@ let Bio = function(props) {
 }
 ```
 
-</div>
+</Smaller>
 </Steps>
 </ModularExampleContainer>
 
@@ -253,7 +273,7 @@ let Bio = function(props) {
 ## 3) Modular like LEGO®
 
 <ModularExampleContainer>
-<div>
+<Smaller size={1.2}>
 
 Posts:
 ```
@@ -267,7 +287,7 @@ let Posts = function(props) {
 }
 ```
 
-</div>
+</Smaller>
 </ModularExampleContainer>
 
 ---
@@ -277,7 +297,7 @@ What passes props into these components?
 
 <ModularExampleContainer>
 <Steps>
-<div>
+<Smaller size={1.2}>
 
 The Blog component!
 ```
@@ -290,7 +310,7 @@ let Blog = function(props) {
 }
 ```
 
-</div>
+</Smaller>
 </Steps>
 </ModularExampleContainer>
 

@@ -1,4 +1,4 @@
-let swiss = require('mdx-deck').themes.swiss
+let {swiss, prism} = require('mdx-deck').themes
 
 let extension = {
   fonts: {
@@ -28,4 +28,4 @@ let extension = {
   }
 }
 
-export default {...swiss, ...extension}
+export default {...prism, ...swiss, ...extension}
