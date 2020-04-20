@@ -9,6 +9,7 @@ let extension = {
   colors: {
     text: '#433',
     background: 'unset',
+    backdrop: 'unset',
     primary: '#33e',
   },
   fontWeights: {
