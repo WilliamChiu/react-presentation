@@ -45,7 +45,7 @@ let Blog = function(props) {
   return <div>
     <Photo url="./sanic.png"/>
     <Bio name="Billy" age="21" hobbies={["reading", "bouldering", "memeing"]}/>
-    <Posts posts={["i like apples", "i like sonic", "i miss school"]}/>
+    <Posts posts={["i like apples", "i liek sanic", "i miss school"]}/>
   </div>
 }
 
