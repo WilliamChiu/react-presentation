@@ -4,6 +4,7 @@ import ReactLogo from './components/app-spinning-logo.js'
 import Title from './components/title.js'
 import PropStateDemo from './components/prop-state-demo.js'
 import StatesPropsPreContainer from './components/prop-state-container.js'
+import LifecycleDemo from './components/lifecycle-demo.js'
 export const theme = myTheme
 
 <Header>
@@ -329,36 +330,224 @@ let Blog = function(props) {
 ## States and Props
 
 <StatesPropsPreContainer>
+<div>
+Parent Component: 
 
-(Inside) Parent Component: 
 ```javascript
-<Button buttontext={this.state.buttontext}/>
+class PropStateDemo extends React.Component {
+    constructor(props) {
+        super(props) // Call React.Component constuctor
+        this.state = { // Define initial state
+            buttontext: "Hello!"
+        }
+        this.inputChange = this.inputChange.bind(this)
+    }
+    inputChange(event) {
+        this.setState({buttontext: event.target.value})
+    }
+    render() {
+        return <PropStateDemoWrapper>
+            Parent Component
+            <InputField 
+                type="text"
+                value={this.state.buttontext}
+                onChange={this.inputChange}
+            />
+            <Button buttontext={this.state.buttontext}/>
+        </PropStateDemoWrapper>
+    }
+}
 ```
 
+</div>
+<div>
 Child Component:
+
 ```javascript
 class Button extends React.Component {
     constructor(props) {
         super(props) // Call React.Component constuctor
         this.state = { color: "green" } // Define initial state
-        this.isClicked = this.isClicked.bind(this) //ignore
+        this.isClicked = this.isClicked.bind(this) //Required for methods
     }
     isClicked() { //Toggle state between red and green on click
-        if (this.state.color == "green") this.setState({color: "red"})
+        if (this.state.color === "green") this.setState({color: "red"})
         else this.setState({color: "green"})
     }
     render() {
         return <ButtonWrapper>
             Child Component
-            <StyledButton color={this.state.color} onClick={this.isClicked}>
-                {this.props.buttontext} // Uses the buttontext variable passed in from parent
+            <StyledButton 
+                color={this.state.color}
+                onClick={this.isClicked}
+            >
+                // Uses the buttontext variable passed in from parent
+                {this.props.buttontext}
             </StyledButton>
         </ButtonWrapper>
     }
 }
 ```
 
+</div>
 </StatesPropsPreContainer>
+
+---
+## Lifecycle methods
+
+- You can define your own actions to trigger at different stages of each component's lifecycle
+
+<img src="./react-lifecycle.png" style={{height:'35vh', width:'unset'}}/>
+
+---
+## Lifecycle methods
+
+<LifecycleDemo/>
+
+---
+## Lifecycle methods
+
+<Smaller size={0.8}>
+
+```javascript
+class Button extends React.Component {
+   constructor(props) {
+        super(props) // Call React.Component constuctor
+        this.state = { color: "green" } // Define initial state
+        this.isClicked = this.isClicked.bind(this) //Required for methods
+        this.updateCount = 0
+    }
+    isClicked() {
+        if (this.state.color === "green") this.setState({color: "red"})
+        else this.setState({color: "green"}) this.setState({color: "green"})
+    }
+    componentDidUpdate() {
+        this.updateCount++
+    }
+    render() {
+        return <ButtonWrapper>
+            Child Component
+            <StyledButton color={this.state.color} onClick={this.isClicked}> {this.props.buttontext} </StyledButton>
+            Number of updates: {this.updateCount}
+        </ButtonWrapper>
+    }
+}
+```
+
+</Smaller>
+
+---
+## Styling
+
+- Option 1: Vanilla CSS (or Precompiled CSS)
+- Option 2: Styled Components
+
+---
+## Styling
+
+- Vanilla CSS
+- - Similar process for precompiled CSS!
+
+<StatesPropsPreContainer>
+<div>
+
+```javascript
+import React from "react"
+import 'demo.css' \\ Note you don't have to import 'from' anything
+
+class Demo extends React.Component {
+  render() {
+    // In JSX, write className for class
+    return <div className="class1">
+      demo component
+    </div>
+  }
+}
+```
+demo.js
+
+</div>
+<div>
+
+```css
+.class1 {
+  display: block;
+  font-size: 1rem;
+  color: darkgray;
+  /* More styling */
+}
+```
+demo.css
+
+</div>
+</StatesPropsPreContainer>
+
+---
+## Styling
+
+- Styled Components
+
+<StatesPropsPreContainer>
+<div>
+
+```javascript
+import React from "react"
+import Class1 from "demo-styled.js"
+
+class Demo extends React.Component {
+  render() {
+    // In JSX, write className for class
+    return <Class1>
+      demo component
+    </Class1>
+  }
+}
+```
+demo.js
+
+</div>
+<div>
+
+```javascript
+import styled from "styled-components"
+
+const Class1 = styled.div`
+  display: block;
+  font-size: 1rem;
+  color: darkgray;
+  /* More styling */
+` // Notice tick marks to indicate interpolated string
+
+export default Class1
+```
+demo-styled.js
+
+</div>
+</StatesPropsPreContainer>
+
+---
+## Things to be aware of
+
+- JSX is not _exactly_ HTML
+- - HTML: class JSX: className
+- - Intersperce HTML with javascript logic
+- setState:
+- - Not the same as setting a variable! Triggers rerender of component
+- - Don't use setState inside componentDidUpdate (why?)
+
+---
+## How to get started
+
+- React needs several tools to work with it to work
+- **Babel**: transpiles JSX and newer Javascript into browser runnable JS
+- **Webpack**: bundles modules into one JS file for browser to run
+- Use **create-react-app** tool to set up a project with everything you need!
+
+---
+##
+
+- Questions so far?
+- Live Demo
 
 ---
 
@@ -380,6 +569,10 @@ class Button extends React.Component {
 ---
 
 ## List of confusing things about React
+- Why react?
+- - Real world applications
+- - Better code organization
+- - Why do we love react?
 - JSX?
 - Other tools that React often gets dumped together with: Webpack, npm, node, Express, create-react-app, Babel
 - Why doesnt it look like javascript? ES6 classes as an abstraction of prototype architecture

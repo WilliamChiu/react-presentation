@@ -28,6 +28,7 @@ class Button extends React.Component {
             color: "green"
         }
         this.isClicked = this.isClicked.bind(this)
+        this.updateCount = 0
     }
     isClicked() {
         if (this.state.color === "green") {
@@ -36,17 +37,21 @@ class Button extends React.Component {
             this.setState({color: "green"})
         }
     }
+    componentDidUpdate() {
+        this.updateCount++
+    }
     render() {
         return <ButtonWrapper>
             Child Component
             <StyledButton color={this.state.color} onClick={this.isClicked}>
                 {this.props.buttontext}
             </StyledButton>
+            Number of updates: {this.updateCount}
         </ButtonWrapper>
     }
 }
 
-const PropStateDemoWrapper = styled.div`
+const LifecycleDemoWrapper = styled.div`
     border: 1px solid blue;
     padding: 10px;
     font-size: 2rem;
@@ -63,7 +68,7 @@ const InputField = styled.input`
     margin: 10px;
 `
 
-class PropStateDemo extends React.Component {
+class LifecycleDemo extends React.Component {
     constructor(props) {
         super(props) // Call React.Component constuctor
         this.state = { // Define initial state
@@ -75,12 +80,12 @@ class PropStateDemo extends React.Component {
         this.setState({buttontext: event.target.value})
     }
     render() {
-        return <PropStateDemoWrapper>
+        return <LifecycleDemoWrapper>
             Parent Component
             <InputField type="text" value={this.state.buttontext} onChange={this.inputChange} />
             <Button buttontext={this.state.buttontext}/>
-        </PropStateDemoWrapper>
+        </LifecycleDemoWrapper>
     }
 }
 
-export default PropStateDemo
+export default LifecycleDemo
