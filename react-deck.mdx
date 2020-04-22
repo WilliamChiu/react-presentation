@@ -492,14 +492,14 @@ demo.css
 
 ```javascript
 import React from "react"
-import Class1 from "demo-styled.js"
+import StyledDemo from "demo-styled.js"
 
 class Demo extends React.Component {
   render() {
-    // In JSX, write className for class
-    return <Class1>
+    // Use a styled component as you would any React component!
+    return <StyledDemo>
       demo component
-    </Class1>
+    </StyledDemo>
   }
 }
 ```
@@ -511,14 +511,14 @@ demo.js
 ```javascript
 import styled from "styled-components"
 
-const Class1 = styled.div`
+const StyledDemo = styled.div`
   display: block;
   font-size: 1rem;
   color: darkgray;
   /* More styling */
 ` // Notice tick marks to indicate interpolated string
 
-export default Class1
+export default StyledDemo
 ```
 demo-styled.js
 
