@@ -8,7 +8,7 @@ const StatesPropsPreContainer = styled.div`
         font-size: 0.8rem;
     }
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 `
 
 export default StatesPropsPreContainer
