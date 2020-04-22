@@ -23,8 +23,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h1, h2, h3, h4 {
-    color: #1f1616;
-    mix-blend-mode: color-burn;
+    opacity: 0.9;
   }
 `
 
