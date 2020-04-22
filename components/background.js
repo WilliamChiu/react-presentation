@@ -21,6 +21,11 @@ const GlobalStyle = createGlobalStyle`
     padding: 1rem;
     font-size: 1.5rem;
   }
+
+  h1, h2, h3, h4 {
+    color: #1f1616;
+    mix-blend-mode: color-burn;
+  }
 `
 
 export default GlobalStyle
